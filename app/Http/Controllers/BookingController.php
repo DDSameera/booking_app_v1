@@ -77,9 +77,6 @@ class BookingController extends Controller
         if ($booking->status !== 'confirmed') {
             return back()->with('error', 'This booking is not active.');
         }
-        if (now()->gte($booking->check_in)) {          // optional rule
-            return back()->with('error', 'You can’t cancel on/after check-in.');
-        }
 
        $update =  $booking->update(['status' => 'cancelled']);
         return back()->with('success', 'Booking cancelled.');

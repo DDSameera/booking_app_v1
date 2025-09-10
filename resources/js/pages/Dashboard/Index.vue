@@ -29,7 +29,7 @@ const handleCancelBooking = (reference:any) => {
     <AppLayout>
         <Head title="My Bookings" />
 
-        <h1 class="title">My Bookings</h1>
+        <h1 class="title">List of All Bookings</h1>
 
         <!-- Upcoming bookings -->
         <section class="section">
@@ -44,7 +44,7 @@ const handleCancelBooking = (reference:any) => {
                         <p>Total: ${{ Number(b.total_price).toFixed(2) }}</p>
                     </div>
                     <span class="badge upcoming">Upcoming</span>
-                    <button @click="handleCancelBooking(b.reference)">Cancel Booking</button>
+                    <button class="danger-cta" @click="handleCancelBooking(b.reference)">Cancel</button>
                 </div>
             </div>
             <p v-else class="empty">No upcoming bookings.</p>
@@ -141,4 +141,10 @@ const handleCancelBooking = (reference:any) => {
     color: #6b7280;
     font-size: 0.9rem;
 }
+.danger-cta{
+    margin-top:8px;
+    background: #ff0101;
+    color:#fff;border:none;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer}
+
+
 </style>

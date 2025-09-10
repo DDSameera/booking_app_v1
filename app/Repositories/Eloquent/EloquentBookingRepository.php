@@ -48,7 +48,7 @@ class EloquentBookingRepository implements BookingRepositoryInterface
         return Booking::with('room')
             ->when($userId, fn($q) => $q->where('user_id', $userId))
             ->where('status', 'confirmed')
-            ->where('check_in', '>=', now())
+            ->whereDate('check_in', '>=', now()->toDateString())
             ->orderBy('check_in')
             ->paginate($perPage);
     }
