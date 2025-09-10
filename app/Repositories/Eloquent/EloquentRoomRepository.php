@@ -29,7 +29,7 @@ class EloquentRoomRepository implements RoomRepositoryInterface
             })
             ->orderBy('price_per_night');
 
-        return $q->paginate($perPage);
+        return $q->paginate($perPage)->withQueryString();
     }
 
     public function findById(int $id) {
