@@ -10,7 +10,7 @@ const auth = props.auth || {}
     <div class="app min-h-screen flex flex-col">
         <header class="masthead">
             <div class="brand">
-                <Link href="/">Hotel<span>Book</span></Link>
+                <Link href="/">Hilton <span>Booking</span></Link>
             </div>
 
             <nav class="nav">
