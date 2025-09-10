@@ -20,7 +20,7 @@ env:
   NODE_VERSION: '22'
   PHP_VERSION: '8.4'
   SERVER_ROOT: "/home/hiltonwebbyus"
-  APP_DIR: "/home/hiltonwebbyus/repositories/booking_app_v1"
+  APP_DIR: "/home/hiltonwebbyus/laravelapp"
   TMP: "/home/hiltonwebbyus/release_tmp"
   PUBLIC_HTML: "/home/hiltonwebbyus/public_html"
   DB_BACKUPS: "/home/hiltonwebbyus/dbbackups"
