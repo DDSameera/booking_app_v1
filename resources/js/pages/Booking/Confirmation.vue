@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppLayout from '@/Layouts/AppLayout.vue'
+import AppLayout from '@/layouts/AppLayout.vue'
 import Stepper from '@/components/Stepper.vue'
 import { Head, Link } from '@inertiajs/vue3'
 import { route } from 'ziggy-js';
