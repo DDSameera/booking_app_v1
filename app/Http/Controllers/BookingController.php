@@ -70,14 +70,18 @@ class BookingController extends Controller
         ]);
     }
 
-    public function cancel(string $reference)
+    public function destroy(string $reference)
     {
         $booking = $this->bookings->findByReference($reference);
 
-        abort_unless($booking && $booking->user_id === auth()->id(), 403);
+        if ($booking->status !== 'confirmed') {
+            return back()->with('error', 'This booking is not active.');
+        }
+        if (now()->gte($booking->check_in)) {          // optional rule
+            return back()->with('error', 'You can’t cancel on/after check-in.');
+        }
 
-        $this->bookings->cancel($booking);
-
+       $update =  $booking->update(['status' => 'cancelled']);
         return back()->with('success', 'Booking cancelled.');
     }
 }

@@ -33,4 +33,32 @@ class EloquentBookingRepository implements BookingRepositoryInterface
     {
         return Booking::with('room')->where('reference', $reference)->first();
     }
+
+    public function pastByUser(?int $userId, int $perPage = 10)
+    {
+        return Booking::with('room')
+            ->when($userId, fn($q) => $q->where('user_id', $userId))
+            ->where('check_out', '<=', now())
+            ->orderByDesc('check_out')
+            ->paginate($perPage);
+    }
+
+    public function upcomingByUser(?int $userId, int $perPage = 10)
+    {
+        return Booking::with('room')
+            ->when($userId, fn($q) => $q->where('user_id', $userId))
+            ->where('status', 'confirmed')
+            ->where('check_in', '>=', now())
+            ->orderBy('check_in')
+            ->paginate($perPage);
+    }
+
+    public function cancelledByUser(?int $userId, int $perPage = 10)
+    {
+        return Booking::with('room')
+            ->when($userId, fn($q) => $q->where('user_id', $userId))
+            ->where('status','cancelled')
+            ->orderBy('status')
+            ->paginate($perPage);
+    }
 }

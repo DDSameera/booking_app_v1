@@ -15,12 +15,14 @@ class DashboardController extends Controller
 
     }
 
-    public function __invoke()
+    public function index()
     {
-        $items = $this->bookings->byUser(auth()->id());
+        $userId = NULL;  //Assume All users are guest
 
         return Inertia::render('Dashboard/Index', [
-            'bookings' => $items,
+            'past' => $this->bookings->pastByUser($userId) ?? collect([]),
+            'upcoming' => $this->bookings->upcomingByUser($userId) ?? collect([]),
+            'cancelled' => $this->bookings->cancelledByUser($userId) ?? collect([]),
         ]);
     }
 }

@@ -7,23 +7,21 @@ const auth = props.auth || {}
 </script>
 
 <template>
-    <div class="app">
+    <div class="app min-h-screen flex flex-col">
         <header class="masthead">
             <div class="brand">
                 <Link href="/">Hotel<span>Book</span></Link>
             </div>
 
             <nav class="nav">
-                <Link href="{{ route('rooms.search') }}">Search</Link>
-                <Link href="{{ route('rooms.list') }}" :data="{ check_in: new Date().toISOString().slice(0,10), check_out: new Date(Date.now()+86400000).toISOString().slice(0,10), guests: 1 }" method="get" as="button">Rooms</Link>
                 <Link href="/contact" class="hidden">Contact</Link>
                 <template v-if="auth.user">
                     <Link :href="route('dashboard')">Dashboard</Link>
                     <Link href="/logout" method="post" as="button">Logout</Link>
                 </template>
                 <template v-else>
-                    <Link href="/login">Login</Link>
-                    <Link href="/register">Register</Link>
+                    <Link href="/login">Admin Login</Link>
+                    <Link href="/register">Admin Register</Link>
                 </template>
             </nav>
         </header>
@@ -32,7 +30,7 @@ const auth = props.auth || {}
             <slot />
         </main>
 
-        <footer class="footer">© {{ new Date().getFullYear() }} HotelBook</footer>
+        <footer class="footer">© {{ new Date().getFullYear() }} Hotel Booking Management System - Sameera Dananjaya Wijerathna </footer>
     </div>
 </template>
 
