@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Link, usePage } from '@inertiajs/vue3'
+import { route } from 'ziggy-js';
 
 const { props } = usePage()
 const auth = props.auth || {}

@@ -12,10 +12,6 @@ use App\Http\Controllers\{
 //    return Inertia::render('Welcome');
 //})->name('home');
 //
-//Route::get('dashboard', function () {
-//    return Inertia::render('Dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
 
 Route::get('/', [RoomController::class, 'search'])->name('rooms.search');
 Route::get('/rooms', [RoomController::class, 'list'])->name('rooms.list');
@@ -25,9 +21,15 @@ Route::post('/booking', [BookingController::class, 'store'])->name('booking.stor
 Route::post('/booking/{reference}/cancel', [BookingController::class, 'cancel'])->name('booking.cancel');
 
 // booking flow
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
+//
+//    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+//});
 
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
-});
+Route::get('dashboard', function () {
+    return Inertia::render('Dashboard/index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

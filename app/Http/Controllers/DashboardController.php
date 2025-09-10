@@ -7,8 +7,12 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
-    public function __construct(private BookingRepositoryInterface $bookings) {
-        $this->middleware('auth');
+    private BookingRepositoryInterface $bookings;
+
+    public function __construct(BookingRepositoryInterface $bookings)
+    {
+        $this->bookings = $bookings;
+
     }
 
     public function __invoke()
@@ -16,7 +20,7 @@ class DashboardController extends Controller
         $items = $this->bookings->byUser(auth()->id());
 
         return Inertia::render('Dashboard/Index', [
-            'bookings' => $items
+            'bookings' => $items,
         ]);
     }
 }
