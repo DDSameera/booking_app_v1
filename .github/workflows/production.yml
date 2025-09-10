@@ -2,10 +2,13 @@ name: Prod Deploy (hilton.webbyus.com)
 run-name: Booking App - Production
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches: [ main ]
     types:
-      - closed        # fires when PR is closed (includes merged PRs)
+      - closed
   workflow_dispatch:
 
 
