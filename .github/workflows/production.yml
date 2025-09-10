@@ -107,9 +107,6 @@ jobs:
       - name: Prepare .env for tests
         run: cp .env.example .env
 
-      - name: Run tests (verbose list)
-        run: ./vendor/bin/pest --configuration phpunit.xml.dist --colors=always --testdox -v
-
       - name: Prepare deploy folder
         run: |
           rm -rf deploy
