@@ -30,7 +30,7 @@ const auth = props.auth || {}
             <slot />
         </main>
 
-        <footer class="footer">© {{ new Date().getFullYear() }} Hotel Booking Management System - Sameera Dananjaya Wijerathna </footer>
+        <footer class="footer">© {{ new Date().getFullYear() }} Hilton Booking Management System - Sameera Dananjaya Wijerathna </footer>
     </div>
 </template>
 
